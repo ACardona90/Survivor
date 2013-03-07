@@ -18,8 +18,8 @@ class Bola(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = load_image("imagenes/bola.jpg", True)
         self.rect = self.image.get_rect()
-        self.rect.centerx = WIDTH / 2
-        self.rect.centery = HEIGHT / 2
+        self.rect.centerx = width / 2
+        self.rect.centery = height / 2
         self.speed = [0.5, -0.5]
 
 # ---------------------------------------------------------------------
@@ -43,7 +43,8 @@ def main():
     pygame.display.set_caption("Survivor pong")
 
     background_image = load_image('imagenes/fondo.jpg')
-    
+    bola = Bola()
+
     while True:
         for eventos in pygame.event.get():
             if eventos.type == QUIT:
