@@ -32,6 +32,24 @@ class Bola(pygame.sprite.Sprite):
         self.speed[1] = -self.speed[1]
         self.rect.centery += self.speed[1] * time
 
+class pala(pygame.sprite.sprite):
+    def __init__(self, X):
+        pygame.sprite.sprite.__init__(self)
+        self.image = load_imagine("imagenes/pala.jpg")
+        self.rect = self.image.get_rect()
+        self.rect.centerx = X
+        self.rect.centery = height / 2
+        self.speed = 0.5
+
+    def mover(self, time, keys):
+        if self.rect.top >= 0:
+            if keys[K_UP]:
+                self.rect.centery -= self.speed * time
+        if self.rect.bottom <= height:
+            if keys[K_DOWN]:
+                self.rect.centery += self.speed * time
+        
+
 # ---------------------------------------------------------------------
  
 # Funciones
