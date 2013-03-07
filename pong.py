@@ -7,8 +7,8 @@ import sys, pygame
 from pygame.locals import *	
  
 # Constantes
-width = 640
-height = 480 
+width = 740
+height = 580 
 
 # Clases
 # ---------------------------------------------------------------------
