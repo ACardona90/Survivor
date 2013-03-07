@@ -32,7 +32,11 @@ class Bola(pygame.sprite.Sprite):
         self.speed[1] = -self.speed[1]
         self.rect.centery += self.speed[1] * time
 
-class pala(pygame.sprite.sprite):
+    if pygame.sprite.collide_rect(self, palaj):
+        self.speed[0] = -self.speed[0]
+        self.rect.centerx += self.speed[0] * time
+
+class Pala(pygame.sprite.sprite):
     def __init__(self, X):
         pygame.sprite.sprite.__init__(self)
         self.image = load_imagine("imagenes/pala.jpg")
@@ -72,6 +76,7 @@ def main():
 
     background_image = load_image('imagenes/fondo.jpg')
     bola = Bola()
+    palaj = Pala
 
     clock = pygame.time.Clock()
 
@@ -81,8 +86,11 @@ def main():
             if eventos.type == QUIT:
                 sys.exit(0)
                 
+        bola.actualizar(time, palaj)
+        pala_jug.mover(time, keys)
         screen.blit(background_image, (0,0))
         screen.blit(bola.image, bola.rect)
+        screen.blit(palaj.image, palaj.rect)
         pygame.display.flip()
     return 0
  
