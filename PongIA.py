@@ -24,6 +24,12 @@ class Bola(pygame.sprite.Sprite):
     def actualizar(self, time, pala_jug, pala_cpu):
         self.rect.centerx += self.speed[0] * time
         self.rect.centery += self.speed[1] * time
+        
+        if self.rect.left <=0:
+            puntos[1] += 1
+        if self.rect.right >=width:
+            puntos[0] += 1
+
         if self.rect.left <= 0 or self.rect.right >= WIDTH:
             self.speed[0] = -self.speed[0]
             self.rect.centerx += self.speed[0] * time
@@ -38,6 +44,8 @@ class Bola(pygame.sprite.Sprite):
         if pygame.sprite.collide_rect(self, pala_cpu):
             self.speed[0] = -self.speed[0]
             self.rect.centerx += self.speed[0] * time
+
+        return puntos
  
 class Pala(pygame.sprite.Sprite):
     def __init__(self, x):
