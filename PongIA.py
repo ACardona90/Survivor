@@ -21,15 +21,15 @@ class Bola(pygame.sprite.Sprite):
         self.rect.centery = HEIGHT / 2
         self.speed = [0.5, -0.5]
  
-    def actualizar(self, time, pala_jug, pala_cpu, puntos):
+    def actualizar(self, time, pala_jug, pala_cpu):
         self.rect.centerx += self.speed[0] * time
         self.rect.centery += self.speed[1] * time
- 
-        if self.rect.left <= 0:
+        
+        if self.rect.left <=0:
             puntos[1] += 1
-        if self.rect.right >= WIDTH:
+        if self.rect.right >=width:
             puntos[0] += 1
- 
+
         if self.rect.left <= 0 or self.rect.right >= WIDTH:
             self.speed[0] = -self.speed[0]
             self.rect.centerx += self.speed[0] * time
@@ -44,7 +44,7 @@ class Bola(pygame.sprite.Sprite):
         if pygame.sprite.collide_rect(self, pala_cpu):
             self.speed[0] = -self.speed[0]
             self.rect.centerx += self.speed[0] * time
- 
+
         return puntos
  
 class Pala(pygame.sprite.Sprite):
@@ -85,6 +85,14 @@ def load_image(filename, transparent=False):
                 color = image.get_at((0,0))
                 image.set_colorkey(color, RLEACCEL)
         return image
+
+def texto(texto, posx, posy, color=(255, 255, 255)):
+    fuente = pygame.font.Font(&quot;images/DroidSans.ttf&quot;, 25)
+    salida = pygame.font.Font.render(fuente, texto, 1, color)
+    salida_rect = salida.get_rect()
+    salida_rect.centerx = posx
+    salida_rect.centery = posy
+    return salida, salida_rect
  
 # ---------------------------------------------------------------------
  
