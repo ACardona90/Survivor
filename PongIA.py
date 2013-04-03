@@ -99,6 +99,8 @@ def texto(texto, posx, posy, color=(255, 255, 255)):
 def main():
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("Survivor Pong")
+    pygame.display.set_caption(&quot;Survivor&quot;)
+    
  
     background_image = load_image('imagenes/fondo.png')
     bola = Bola()
