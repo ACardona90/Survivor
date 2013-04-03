@@ -98,6 +98,8 @@ def main():
     pala_cpu = Pala(WIDTH - 30)
  
     clock = pygame.time.Clock()
+
+    puntos = [0, 0]
  
     while True:
         time = clock.tick(60)
@@ -106,6 +108,7 @@ def main():
             if eventos.type == QUIT:
                 sys.exit(0)
  
+        puntos = bola.actualizar(time, pala_jug, pala_cpu, puntos)
         bola.actualizar(time, pala_jug, pala_cpu)
         pala_jug.mover(time, keys)
         pala_cpu.ia(time, bola)
